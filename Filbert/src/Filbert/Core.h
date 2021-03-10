@@ -9,3 +9,5 @@
 #else
     #error Filbert is Windows only!
 #endif
+
+#define BIT(x) (1<<x)
