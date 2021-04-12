@@ -1,3 +1,9 @@
 [submodule "Filbert/vendor/spdlog"]
 	path = Filbert/vendor/spdlog
 	url = https://github.com/gabime/spdlog
+[submodule "GLFW"]
+	path = GLFW
+	url = https://github.com/TheCherno/GLFW
+[submodule "Filbert/vendor/GLFW"]
+	path = Filbert/vendor/GLFW
+	url = https://github.com/TheCherno/GLFW
