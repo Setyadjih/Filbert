@@ -7,6 +7,12 @@
     <Filter Include="Filbert\Events">
       <UniqueIdentifier>{D11FF9D2-BDED-ECD8-A681-5DFF92EEC83D}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Platform">
+      <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\Windows">
+      <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Filbert.h" />
@@ -31,16 +37,39 @@
     <ClInclude Include="src\Filbert\Events\MouseEvent.h">
       <Filter>Filbert\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Filbert\Layer.h">
+      <Filter>Filbert</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Filbert\LayerStack.h">
+      <Filter>Filbert</Filter>
+    </ClInclude>
     <ClInclude Include="src\Filbert\Log.h">
       <Filter>Filbert</Filter>
     </ClInclude>
+    <ClInclude Include="src\Filbert\Window.h">
+      <Filter>Filbert</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
+      <Filter>Platform\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\fbpch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Filbert\Application.cpp">
       <Filter>Filbert</Filter>
     </ClCompile>
+    <ClCompile Include="src\Filbert\Layer.cpp">
+      <Filter>Filbert</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Filbert\LayerStack.cpp">
+      <Filter>Filbert</Filter>
+    </ClCompile>
     <ClCompile Include="src\Filbert\Log.cpp">
       <Filter>Filbert</Filter>
     </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
+      <Filter>Platform\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\fbpch.cpp" />
   </ItemGroup>
 </Project>

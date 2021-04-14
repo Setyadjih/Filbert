@@ -1,7 +1,5 @@
 #pragma once
-
 #include "Event.h"
-#include <sstream>
 
 namespace Filbert
 {
@@ -31,7 +29,7 @@ namespace Filbert
     class FILBERT_API MouseScrolledEvent : public Event
     {
     public:
-        MouseScrolledEvent(float xOffset, float yOffset)
+        MouseScrolledEvent(const float xOffset, const float yOffset)
             :m_XOffset(xOffset), m_YOffset(yOffset) {}
 
         inline float GetXOffset() const { return m_XOffset; }
@@ -43,6 +41,9 @@ namespace Filbert
             ss << "MouseScrolledEvent: " << m_XOffset << ", " << m_YOffset;
             return ss.str();
         }
+
+        EVENT_CLASS_TYPE(MouseScrolled)
+        EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
 
     private:
         float m_XOffset, m_YOffset;

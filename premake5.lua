@@ -10,6 +10,12 @@ workspace "Filbert"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+-- Include directories relative to root folder (solution directory)
+IncludeDir = {}
+IncludeDir["GLFW"] = "Filbert/vendor/GLFW/include"
+
+include "Filbert/vendor/GLFW"
+
 project "Filbert"
     location "Filbert"
     kind "SharedLib"
@@ -17,6 +23,9 @@ project "Filbert"
 
     targetdir ("bin/" .. outputdir .."/%{prj.name}")
     objdir ("bin-int/" .. outputdir .."/%{prj.name}")
+
+    pchheader "fbpch.h"
+    pchsource "Filbert/src/fbpch.cpp"
 
     files
     {
@@ -27,7 +36,14 @@ project "Filbert"
     includedirs
     {
         "%{prj.name}/src",
-        "%{prj.name}/vendor/spdlog/include"
+        "%{prj.name}/vendor/spdlog/include",
+        "%{IncludeDir.GLFW}"
+    }
+
+    links
+    {
+        "GLFW",
+        "opengl32.lib"
     }
 
     filter "system:windows"
@@ -43,14 +59,17 @@ project "Filbert"
 
     filter "configurations:Debug"
         defines "FB_DEBUG"
+        buildoptions "/MDd"
         symbols "On"
 
     filter "configurations:Release"
         defines "FB_RELEASE"
+        buildoptions "/MD"
         optimize "On"
 
     filter "configurations:Dist"
         defines "FB_DIST"
+        buildoptions "/MD"
         optimize "On"
 
 project "Sandbox"
@@ -80,7 +99,7 @@ project "Sandbox"
 
     filter "system:windows"
         cppdialect "C++17"
-        staticruntime "On"
+        staticruntime "on"
         systemversion "latest"
 
         defines
@@ -95,12 +114,15 @@ project "Sandbox"
 
     filter "configurations:Debug"
         defines "FB_DEBUG"
+        buildoptions "/MDd"
         symbols "On"
 
     filter "configurations:Release"
         defines "FB_RELEASE"
+        buildoptions "/MD"
         optimize "On"
 
     filter "configurations:Dist"
         defines "FB_DIST"
+        buildoptions "/MD"
         optimize "On"
