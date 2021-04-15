@@ -6,6 +6,8 @@
 #include "Filbert/Layer.h"
 #include "Filbert/Log.h"
 
+#include "Filbert/ImGui/ImGuiLayer.h"
+
 // ---Entry Point-----------------------
 #include "Filbert/EntryPoint.h"
 // -------------------------------------

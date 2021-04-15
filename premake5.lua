@@ -13,8 +13,12 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 -- Include directories relative to root folder (solution directory)
 IncludeDir = {}
 IncludeDir["GLFW"] = "Filbert/vendor/GLFW/include"
+IncludeDir["Glad"] = "Filbert/vendor/Glad/include"
+IncludeDir["ImGui"] = "Filbert/vendor/imgui"
 
 include "Filbert/vendor/GLFW"
+include "Filbert/vendor/Glad"
+include "Filbert/vendor/imgui"
 
 project "Filbert"
     location "Filbert"
@@ -37,12 +41,16 @@ project "Filbert"
     {
         "%{prj.name}/src",
         "%{prj.name}/vendor/spdlog/include",
-        "%{IncludeDir.GLFW}"
+        "%{IncludeDir.GLFW}",
+        "%{IncludeDir.Glad}",
+        "%{IncludeDir.ImGui}",
     }
 
     links
     {
         "GLFW",
+        "Glad",
+        "ImGui",
         "opengl32.lib"
     }
 
@@ -54,7 +62,8 @@ project "Filbert"
         defines
         {
             "FB_PLATFORM_WINDOWS",
-            "FILBERT_BUILD_DLL"
+            "FILBERT_BUILD_DLL",
+            "GLFW_INCLUDE_NONE"
         }
 
     filter "configurations:Debug"
