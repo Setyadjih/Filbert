@@ -1,5 +1,6 @@
 workspace "Filbert"
     architecture "x64"
+    startproject "Sandbox"
 
     configurations
     {
@@ -19,6 +20,7 @@ IncludeDir["ImGui"] = "Filbert/vendor/imgui"
 include "Filbert/vendor/GLFW"
 include "Filbert/vendor/Glad"
 include "Filbert/vendor/imgui"
+
 
 project "Filbert"
     location "Filbert"
@@ -56,7 +58,7 @@ project "Filbert"
 
     filter "system:windows"
         cppdialect "C++17"
-        staticruntime "On"
+        staticruntime "off"
         systemversion "latest"
 
         defines
@@ -68,17 +70,17 @@ project "Filbert"
 
     filter "configurations:Debug"
         defines "FB_DEBUG"
-        buildoptions "/MDd"
+        runtime "Debug"
         symbols "On"
 
     filter "configurations:Release"
         defines "FB_RELEASE"
-        buildoptions "/MD"
+        runtime "Release"
         optimize "On"
 
     filter "configurations:Dist"
         defines "FB_DIST"
-        buildoptions "/MD"
+        runtime "Release"
         optimize "On"
 
 project "Sandbox"
@@ -108,7 +110,7 @@ project "Sandbox"
 
     filter "system:windows"
         cppdialect "C++17"
-        staticruntime "on"
+        staticruntime "off"
         systemversion "latest"
 
         defines
@@ -123,15 +125,15 @@ project "Sandbox"
 
     filter "configurations:Debug"
         defines "FB_DEBUG"
-        buildoptions "/MDd"
+        runtime "Debug"
         symbols "On"
 
     filter "configurations:Release"
         defines "FB_RELEASE"
-        buildoptions "/MD"
+        runtime "Release"
         optimize "On"
 
     filter "configurations:Dist"
         defines "FB_DIST"
-        buildoptions "/MD"
+        runtime "Release"
         optimize "On"
