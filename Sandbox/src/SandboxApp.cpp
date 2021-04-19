@@ -10,12 +10,17 @@ public:
 
     void OnUpdate() override
     {
-        FB_INFO("ExampleLayer::Update");
+
+        if (Filbert::Input::IsKeyPressed(FB_KEY_TAB)) { FB_TRACE("Tab is pressed!"); }
     }
 
     void OnEvent(Filbert::Event& event) override
     {
-        FB_TRACE("{0}", event);
+        if (event.GetEventType() == Filbert::EventType::KeyPressed)
+        {
+            Filbert::KeyPressedEvent& e = (Filbert::KeyPressedEvent&) event;
+            FB_TRACE("{0}", (char) e.GetKeyCode());
+        }
     }
 };
 
@@ -26,7 +31,7 @@ public:
     {
         PushLayer(new ExampleLayer());
         PushOverlay(new Filbert::ImGuiLayer());
-    }
+    } 
 
     ~Sandbox()
     {

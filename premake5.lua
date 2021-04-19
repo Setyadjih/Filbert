@@ -17,10 +17,13 @@ IncludeDir["GLFW"] = "Filbert/vendor/GLFW/include"
 IncludeDir["Glad"] = "Filbert/vendor/Glad/include"
 IncludeDir["ImGui"] = "Filbert/vendor/imgui"
 
-include "Filbert/vendor/GLFW"
-include "Filbert/vendor/Glad"
-include "Filbert/vendor/imgui"
 
+group "Dependencies"
+    include "Filbert/vendor/GLFW"
+    include "Filbert/vendor/Glad"
+    include "Filbert/vendor/imgui"
+    
+group ""
 
 project "Filbert"
     location "Filbert"
@@ -66,6 +69,10 @@ project "Filbert"
             "FB_PLATFORM_WINDOWS",
             "FILBERT_BUILD_DLL",
             "GLFW_INCLUDE_NONE"
+        }
+        postbuildcommands
+        {
+	        ("{COPY} %{cfg.buildtarget.relpath} \"../bin/"..outputdir.."/Sandbox/\"")
         }
 
     filter "configurations:Debug"
@@ -118,10 +125,6 @@ project "Sandbox"
             "FB_PLATFORM_WINDOWS"
         }
         
-        postbuildcommands
-        {
-	        ("{COPY} ../bin/" .. outputdir .. "/Filbert/Filbert.dll %{cfg.buildtarget.directory}")
-        }
 
     filter "configurations:Debug"
         defines "FB_DEBUG"
