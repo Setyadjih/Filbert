@@ -92,6 +92,9 @@
       <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>..\bin\Debug-windows-x86_64\Filbert\Filbert.lib</ImportLibrary>
     </Link>
+    <PostBuildEvent>
+      <Command>IF EXIST ..\bin\Debug-windows-x86_64\Filbert\Filbert.dll\ (xcopy /Q /E /Y /I ..\bin\Debug-windows-x86_64\Filbert\Filbert.dll "..\bin\Debug-windows-x86_64\Sandbox\" &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Debug-windows-x86_64\Filbert\Filbert.dll "..\bin\Debug-windows-x86_64\Sandbox\" &gt; nul)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -115,6 +118,9 @@
       <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>..\bin\Release-windows-x86_64\Filbert\Filbert.lib</ImportLibrary>
     </Link>
+    <PostBuildEvent>
+      <Command>IF EXIST ..\bin\Release-windows-x86_64\Filbert\Filbert.dll\ (xcopy /Q /E /Y /I ..\bin\Release-windows-x86_64\Filbert\Filbert.dll "..\bin\Release-windows-x86_64\Sandbox\" &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Release-windows-x86_64\Filbert\Filbert.dll "..\bin\Release-windows-x86_64\Sandbox\" &gt; nul)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
     <ClCompile>
@@ -138,8 +144,12 @@
       <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>..\bin\Dist-windows-x86_64\Filbert\Filbert.lib</ImportLibrary>
     </Link>
+    <PostBuildEvent>
+      <Command>IF EXIST ..\bin\Dist-windows-x86_64\Filbert\Filbert.dll\ (xcopy /Q /E /Y /I ..\bin\Dist-windows-x86_64\Filbert\Filbert.dll "..\bin\Dist-windows-x86_64\Sandbox\" &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Dist-windows-x86_64\Filbert\Filbert.dll "..\bin\Dist-windows-x86_64\Sandbox\" &gt; nul)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Filbert\Input.h" />
     <ClInclude Include="src\Filbert.h" />
     <ClInclude Include="src\Filbert\Application.h" />
     <ClInclude Include="src\Filbert\Core.h" />
@@ -149,15 +159,19 @@
     <ClInclude Include="src\Filbert\Events\KeyEvent.h" />
     <ClInclude Include="src\Filbert\Events\MouseEvent.h" />
     <ClInclude Include="src\Filbert\ImGui\ImGuiLayer.h" />
+    <ClInclude Include="src\Filbert\KeyCodes.h" />
     <ClInclude Include="src\Filbert\Layer.h" />
     <ClInclude Include="src\Filbert\LayerStack.h" />
     <ClInclude Include="src\Filbert\Log.h" />
+    <ClInclude Include="src\Filbert\MouseButtonCodes.h" />
     <ClInclude Include="src\Filbert\Window.h" />
     <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\fbpch.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Filbert\Input.cpp" />
     <ClCompile Include="src\Filbert\Application.cpp" />
     <ClCompile Include="src\Filbert\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Filbert\Layer.cpp" />
@@ -168,6 +182,7 @@
     <ClCompile Include="src\fbpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="vendor\GLFW\GLFW.vcxproj">

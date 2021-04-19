@@ -14,7 +14,7 @@
     #define HZ_ENABLE_ASSERTS
 #endif
 
-#ifA FB_ENABLE_ASSERTS
+#if FB_ENABLE_ASSERTS
     #define FB_ASSERT(x, ...) { if (!(x)) { FB_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); }}
     #define FB_CORE_ASSERT(x, ...) { if (!(x)) { FB_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); }}
 #else
