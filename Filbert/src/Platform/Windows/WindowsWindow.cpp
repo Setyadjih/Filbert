@@ -5,7 +5,8 @@
 #include "Filbert/Events/MouseEvent.h"
 #include "Filbert/Events/ApplicationEvent.h"
 
-#include <glad/glad.h>
+#include "Platform/OpenGL/OpenGLContext.h"
+
 
 namespace Filbert
 {
@@ -47,9 +48,12 @@ namespace Filbert
         }
 
         m_Window = glfwCreateWindow((int) props.Width, (int) props.Height, m_Data.Title.c_str(), nullptr, nullptr);
-        glfwMakeContextCurrent(m_Window);
-        int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
-        FB_CORE_ASSERT(status, "Failed to initialize Glad!");
+        
+        m_Context = new OpenGLContext(m_Window);
+        m_Context->Init();
+        // Below should be done within Init()
+
+
         glfwSetWindowUserPointer(m_Window, &m_Data);
         SetVSync(true);
 
@@ -153,7 +157,7 @@ namespace Filbert
     void WindowsWindow::OnUpdate()
     {
         glfwPollEvents();
-        glfwSwapBuffers(m_Window);
+        m_Context->SwapBuffers();
     }
     void WindowsWindow::SetVSync(bool enabled)
     {

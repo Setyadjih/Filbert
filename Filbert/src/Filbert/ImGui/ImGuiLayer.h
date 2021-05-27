@@ -6,6 +6,7 @@
 #include "Filbert/Events/KeyEvent.h"
 #include "Filbert/Events/MouseEvent.h"
 
+
 namespace Filbert
 {
     class FILBERT_API ImGuiLayer : public Layer
@@ -14,21 +15,12 @@ namespace Filbert
         ImGuiLayer();
         ~ImGuiLayer();
 
-        void OnAttach();
-        void OnDetach();
-        void OnUpdate() override;
-        void OnEvent(Event& event) override;
-    private:
-        bool OnMouseButtonPressedEvent(MouseButtonPressedEvent& e);
-        bool OnMouseButtonReleasedEvent(MouseButtonReleasedEvent& e);
-        bool OnMouseMovedEvent(MouseMovedEvent& e);
-        bool OnMouseScrolledEvent(MouseScrolledEvent& e);
-        
-        bool OnKeyPressedEvent(KeyPressedEvent& e);
-        bool OnKeyReleasedEvent(KeyReleasedEvent& e);
-        bool OnKeyTypedEvent(KeyTypedEvent& e);
+        virtual void OnAttach() override;
+        virtual void OnDetach() override;
+        virtual void OnImGuiRender() override;
 
-        bool OnWindowResizedEvent(WindowResizeEvent& e);
+        void Begin();
+        void End();
     private:
         float m_Time = 0.0f;
     };

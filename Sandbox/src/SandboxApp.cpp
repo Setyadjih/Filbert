@@ -1,5 +1,7 @@
 #include <Filbert.h>
 
+#include "imgui/imgui.h"
+
 class ExampleLayer : public Filbert::Layer
 {
 public:
@@ -12,6 +14,13 @@ public:
     {
 
         if (Filbert::Input::IsKeyPressed(FB_KEY_TAB)) { FB_TRACE("Tab is pressed!"); }
+    }
+
+    virtual void OnImGuiRender() override
+    {
+        ImGui::Begin("Test");
+        ImGui::Text("Hello World");
+        ImGui::End();
     }
 
     void OnEvent(Filbert::Event& event) override
@@ -30,7 +39,6 @@ public:
     Sandbox()
     {
         PushLayer(new ExampleLayer());
-        PushOverlay(new Filbert::ImGuiLayer());
     } 
 
     ~Sandbox()

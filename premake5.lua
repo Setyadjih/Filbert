@@ -16,6 +16,7 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "Filbert/vendor/GLFW/include"
 IncludeDir["Glad"] = "Filbert/vendor/Glad/include"
 IncludeDir["ImGui"] = "Filbert/vendor/imgui"
+IncludeDir["glm"] = "Filbert/vendor/glm"
 
 
 group "Dependencies"
@@ -27,8 +28,10 @@ group ""
 
 project "Filbert"
     location "Filbert"
-    kind "SharedLib"
+    kind "StaticLib"
     language "C++"
+    cppdialect "C++17"
+    staticruntime "on"
 
     targetdir ("bin/" .. outputdir .."/%{prj.name}")
     objdir ("bin-int/" .. outputdir .."/%{prj.name}")
@@ -40,6 +43,13 @@ project "Filbert"
     {
         "%{prj.name}/src/**.h",
         "%{prj.name}/src/**.cpp",
+        "%{prj.name}/vendor/glm/glm/**.hpp",
+        "%{prj.name}/vendor/glm/glm/**.inl",
+    }
+
+    defines
+    {
+        "_CRT_SECURE_NO_WARNINGS"
     }
 
     includedirs
@@ -49,6 +59,7 @@ project "Filbert"
         "%{IncludeDir.GLFW}",
         "%{IncludeDir.Glad}",
         "%{IncludeDir.ImGui}",
+        "%{IncludeDir.glm}"
     }
 
     links
@@ -60,8 +71,6 @@ project "Filbert"
     }
 
     filter "system:windows"
-        cppdialect "C++17"
-        staticruntime "off"
         systemversion "latest"
 
         defines
@@ -70,30 +79,28 @@ project "Filbert"
             "FILBERT_BUILD_DLL",
             "GLFW_INCLUDE_NONE"
         }
-        postbuildcommands
-        {
-	        ("{COPY} %{cfg.buildtarget.relpath} \"../bin/"..outputdir.."/Sandbox/\"")
-        }
 
     filter "configurations:Debug"
         defines "FB_DEBUG"
         runtime "Debug"
-        symbols "On"
+        symbols "on"
 
     filter "configurations:Release"
         defines "FB_RELEASE"
         runtime "Release"
-        optimize "On"
+        optimize "on"
 
     filter "configurations:Dist"
         defines "FB_DIST"
         runtime "Release"
-        optimize "On"
+        optimize "on"
 
 project "Sandbox"
     location "Sandbox"
     kind "ConsoleApp"
     language "C++"
+    cppdialect "C++17"
+    staticruntime "on"
     
     targetdir ("bin/" .. outputdir .."/%{prj.name}")
     objdir ("bin-int/" .. outputdir .."/%{prj.name}")
@@ -107,7 +114,9 @@ project "Sandbox"
     includedirs
     {
         "Filbert/vendor/spdlog/include",
-        "Filbert/src"
+        "Filbert/src",
+        "Filbert/vendor",
+        "%{IncludeDir.glm}"
     }
 
     links
@@ -116,8 +125,6 @@ project "Sandbox"
     }
 
     filter "system:windows"
-        cppdialect "C++17"
-        staticruntime "off"
         systemversion "latest"
 
         defines
@@ -129,14 +136,14 @@ project "Sandbox"
     filter "configurations:Debug"
         defines "FB_DEBUG"
         runtime "Debug"
-        symbols "On"
+        symbols "on"
 
     filter "configurations:Release"
         defines "FB_RELEASE"
         runtime "Release"
-        optimize "On"
+        optimize "on"
 
     filter "configurations:Dist"
         defines "FB_DIST"
         runtime "Release"
-        optimize "On"
+        optimize "on"

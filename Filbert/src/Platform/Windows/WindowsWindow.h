@@ -1,8 +1,10 @@
 #pragma once
 
 #include "Filbert/Window.h"
+#include "Filbert/Renderer/GraphicsContext.h"
 
 #include <GLFW/glfw3.h>
+
 
 struct GLFWwindow;
 
@@ -30,6 +32,7 @@ namespace Filbert
         virtual void Shutdown();
     private:
         GLFWwindow* m_Window;
+        GraphicsContext* m_Context;
 
         struct WindowData
         {
