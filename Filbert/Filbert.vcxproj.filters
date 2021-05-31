@@ -1344,6 +1344,9 @@
     <ClInclude Include="src\Filbert\Renderer\Buffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGlBuffer.h" />
     <ClInclude Include="src\Filbert\Renderer\Renderer.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLArray.h" />
+    <ClInclude Include="src\Filbert\Renderer\Array.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Filbert\Application.cpp">
@@ -1381,5 +1384,8 @@
     <ClCompile Include="src\Filbert\Renderer\Buffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Filbert\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp" />
+    <ClCompile Include="src\Filbert\Renderer\Array.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLArray.cpp" />
   </ItemGroup>
 </Project>

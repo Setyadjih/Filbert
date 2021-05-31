@@ -140,6 +140,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Filbert\Renderer\Array.h" />
     <ClInclude Include="src\Filbert\Renderer\Buffer.h" />
     <ClInclude Include="src\Filbert\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Filbert\Renderer\Renderer.h" />
@@ -162,6 +163,8 @@
     <ClInclude Include="src\Filbert\Log.h" />
     <ClInclude Include="src\Filbert\MouseButtonCodes.h" />
     <ClInclude Include="src\Filbert\Window.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLArray.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\fbpch.h" />
@@ -580,9 +583,11 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Filbert\Renderer\Array.cpp" />
     <ClCompile Include="src\Filbert\Renderer\Buffer.cpp" />
     <ClCompile Include="src\Filbert\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Filbert\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLArray.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Filbert\Application.cpp" />
@@ -592,6 +597,7 @@
     <ClCompile Include="src\Filbert\Layer.cpp" />
     <ClCompile Include="src\Filbert\LayerStack.cpp" />
     <ClCompile Include="src\Filbert\Log.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\fbpch.cpp">

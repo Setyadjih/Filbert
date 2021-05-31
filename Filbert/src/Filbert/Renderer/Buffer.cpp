@@ -10,7 +10,7 @@ namespace Filbert
     {
         switch (Renderer::GetAPI())
         {
-            case RendererAPI::None:    FB_CORE_ASSERT(false, "RenderAPI::None is currentlynot supported!"); return nullptr;
+            case RendererAPI::None:    FB_CORE_ASSERT(false, "RenderAPI::None is currently not supported!"); return nullptr;
             case RendererAPI::OpenGL:  return new OpenGLVertexBuffer(vertices, size);
         }
         FB_CORE_ASSERT(false, "Unknown RendererAPI!");
