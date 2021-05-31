@@ -140,7 +140,11 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Filbert\Renderer\Buffer.h" />
     <ClInclude Include="src\Filbert\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\Filbert\Renderer\Renderer.h" />
+    <ClInclude Include="src\Filbert\Renderer\Shader.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGlBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Filbert.h" />
     <ClInclude Include="src\Filbert\Application.h" />
@@ -576,6 +580,10 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Filbert\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Filbert\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\Filbert\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Filbert\Application.cpp" />
     <ClCompile Include="src\Filbert\ImGui\ImGuiBuild.cpp" />
