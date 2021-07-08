@@ -1,5 +1,5 @@
 #include "fbpch.h"
-#include "OpenGlBuffer.h"
+#include "OpenGLBuffer.h"
 
 #include <glad/glad.h>
 
